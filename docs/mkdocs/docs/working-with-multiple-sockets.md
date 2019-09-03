@@ -1,4 +1,5 @@
 # Working With Multiple Sockets
+
 Working in Forge Networking you may have found that it is extremely easy to setup a server and then setup a client to communicate with each other. Just in case you have forgotten, lets take a trip down memory lane:
 
 ```csharp
@@ -24,4 +25,6 @@ server3.Connect(myPort + 1);
 And just like that we have 3 servers **server1**, **server2**, and **server3**. These three servers are 3 different servers and manage their own players, network objects, RPCs, and pretty much everything else. Be warned, with great power comes great responsibility! You must always be aware of what networker is being communicated with and also know that the `NetworkManager` can only manage 1 NetWorker for the game. That means that the Instantiate methods and everything else that works with the network on the `NetworkManager` is for that "main" NetWorker. This means you need to do the work of disconnecting these servers when the application exits as well, otherwise the application will hang when the user tries to exit. You are also responsible for managing the references to these NetWorkers as well.
 
 ## Matching Players on Separate NetWorkers
+
 What kind of guys would we be if we didn't tell you about the awesome `NetWorker::FindMatchingPlayer` method. Each NetWorker has a method `FindMatchingPlayer` that can be called to find players that match across the different NetWorkers. **Remember** that just because a player is id **22** on NetWorkerA doesn't mean it will be **22** on NetWorkerB.
+

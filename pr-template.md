@@ -1,8 +1,8 @@
-Fixes issue #
+# pr-template
 
-Changes proposed / reason for pull request
--
--
--
+Fixes issue \#
+
+Changes proposed / reason for pull request - - -
 
 @BeardedManStudios
+

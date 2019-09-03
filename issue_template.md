@@ -1,14 +1,12 @@
+# issue\_template
 
-### Version Number and Operating System(s):
+## Version Number and Operating System\(s\):
 
+## Expected behavior:
 
-### Expected behavior:
+## Actual behavior:
 
+## Steps to reproduce:
 
-### Actual behavior:
+### \[Optional\] Discord Username:
 
-
-### Steps to reproduce:
-
-
-#### [Optional] Discord Username:
