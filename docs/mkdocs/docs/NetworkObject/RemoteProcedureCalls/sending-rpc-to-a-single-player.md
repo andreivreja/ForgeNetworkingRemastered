@@ -1,7 +1,9 @@
 # Sending RPC to a Single Player
+
 During your development process you may find that you have to send an RPC to a single player and nobody else. This is especially useful to target players that are just connecting to the server to send them needed data that is not buffered already.
 
 ### General Example
+
 ```csharp
 // targetPlayer is a NetworkingPlayer refence we got from the NetWorker::Players list or anywhere else
 // args is an object array
@@ -9,7 +11,8 @@ During your development process you may find that you have to send an RPC to a s
 networkObject.SendRpc(targetPlayer, RPC_RPC_NAME, args);
 ```
 
-### Player Accept (join) Example
+### Player Accept \(join\) Example
+
 ```csharp
 // Somewhere in your code
 
@@ -25,4 +28,6 @@ private void PlayerAcceptedSetup(NetworkingPlayer newPlayer, Networker sender)
 ```
 
 ## Notes
-This player targeting with RPCs are done on the server. Clients do not have direct access to each other since all network traffic goes through the server (which makes it [authoritative](/authoritative-design.md)). You can use Receivers.Owner to target the owning player of the network object from any client though.
+
+This player targeting with RPCs are done on the server. Clients do not have direct access to each other since all network traffic goes through the server \(which makes it [authoritative](https://github.com/andreivreja/ForgeNetworkingRemastered/tree/3e106b6d53966d4ac3b3490b277edc6696d12aeb/authoritative-design.md)\). You can use Receivers.Owner to target the owning player of the network object from any client though.
+

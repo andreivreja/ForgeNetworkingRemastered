@@ -4,26 +4,29 @@ Sometimes it is important for our server to go through every player on the netwo
 
 If you were to use a simple lock, then let's say we had a reference to a **NetWorker** with the variable name `myNetWorker`. Now you have direct access to the players via the `myNetWorker.Players` getter, however it is not thread safe to just simply access them in this way; you instead will lock them as seen in the following:
 
-### Locking
+## Locking
+
 ```csharp
 lock (myNetWorker.Players)
 {
-	// Do your player iteration logic here
+    // Do your player iteration logic here
 }
 ```
 
 The second way would be to use the **NetWorker::IteratePlayers** method as described above. There are two ways that you can do this, the first being to provide a lambda expression for quick inline actions and the other is to provide a function pointer.
 
-### Lambda Expression
+## Lambda Expression
+
 ```csharp
 // This is an example of using a lambda expression
 myNetWorker.IteratePlayers((player) =>
 {
-	// Do your player iteration logic here
+    // Do your player iteration logic here
 });
 ```
 
-### Function Pointer
+## Function Pointer
+
 ```csharp
 // This is an example of using a function pointer
 myNetWorker.IteratePlayers(GoThroughPlayers);
@@ -31,6 +34,7 @@ myNetWorker.IteratePlayers(GoThroughPlayers);
 // ...
 private void GoThroughPlayers(NetworkingPlayer player)
 {
-	// Do your player iteration logic here
+    // Do your player iteration logic here
 }
 ```
+

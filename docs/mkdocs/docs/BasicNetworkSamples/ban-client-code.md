@@ -1,5 +1,6 @@
 # Ban Client Code
-Sometimes clients are just annoying and you want your hosts to be able to ban players from joining the server for a given amount of time (or what could be forever). To do this you need to use the reference to your server's `NetWorker`.
+
+Sometimes clients are just annoying and you want your hosts to be able to ban players from joining the server for a given amount of time \(or what could be forever\). To do this you need to use the reference to your server's `NetWorker`.
 
 ```csharp
 // The amount of time in minutes that we want to ban the player
@@ -13,3 +14,4 @@ ulong playerId = targetPlayer.NetworkId;
 // Consider that serverNetworker is the server's networker (this can be NetworkManager.Instance.Networker)
 ((IServer)serverNetworker).BanPlayer(playerId, minutesToBan)
 ```
+

@@ -229,6 +229,17 @@ namespace BeardedManStudios.Forge.Networking
 		public NetworkingPlayer Owner { get; private set; }
 
 		/// <summary>
+		/// A reference to the player who can send RPCs this network object
+		/// </summary>		
+		public NetworkingPlayer Master { get; private set; }
+
+		/// <summary>
+		/// If set to true on the server, anyone can send RPCs to this network object,
+		/// otherwise only the Owner and the Master can
+		/// </summary>
+		public bool AllowPublicRpcs { get; set; }
+		
+		/// <summary>
 		/// A static list for tracking all of the NetworkObjects that have been created on the network
 		/// </summary>
 		private static List<NetworkObject> networkObjects = new List<NetworkObject>();
@@ -558,6 +569,18 @@ namespace BeardedManStudios.Forge.Networking
 		{
 			if (ownershipChanged != null)
 				ownershipChanged(Networker);
+		}
+
+		public void AssignMaster(NetworkingPlayer targetPlayer)
+		{
+			// Only the server is allowed to assign ownership
+			if (!IsServer)
+				return;
+
+			if (Master == targetPlayer)
+				return;
+
+			Master = targetPlayer;
 		}
 
 		/// <summary>
@@ -968,7 +991,14 @@ namespace BeardedManStudios.Forge.Networking
 		/// <returns>If <c>true</c> the RPC will be replicated to other clients</returns>
 		protected virtual bool ServerAllowRpc(byte methodId, Receivers receivers, RpcArgs args)
 		{
-			return true;
+			if(IsServer && !AllowPublicRpcs) {
+				if(args.Info.SendingPlayer == Owner || args.Info.SendingPlayer == Master)
+					return true;
+				else
+					return false;
+			} else {
+				return true;
+			}
 		}
 
 		/// <summary>

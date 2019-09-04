@@ -1,7 +1,8 @@
 # Connecting to Master Server
-_If you have not already, we would suggest reviewing the [Master Server Quick Start](quick-start) documentation to get familiar with the Master Server and to setup the stand alone executable._
 
-When you first initialize your **NetworkManager** (as seen in `MultiplayerMenu.cs`) you will need to provide it with the NetWorker that you wish to use for standard game network communications. To do this the NetworkManager has a method `MasterServerRegisterData` that you can use in order to get the registration data object to allow you to register your game server with the Master Server. Below is an example of how to use the `MasterServerRegisterData` method to generate the json data needed to register the game server.
+_If you have not already, we would suggest reviewing the_ [_Master Server Quick Start_](https://github.com/andreivreja/ForgeNetworkingRemastered/tree/3e106b6d53966d4ac3b3490b277edc6696d12aeb/docs/mkdocs/docs/MasterServer/quick-start/README.md) _documentation to get familiar with the Master Server and to setup the stand alone executable._
+
+When you first initialize your **NetworkManager** \(as seen in `MultiplayerMenu.cs`\) you will need to provide it with the NetWorker that you wish to use for standard game network communications. To do this the NetworkManager has a method `MasterServerRegisterData` that you can use in order to get the registration data object to allow you to register your game server with the Master Server. Below is an example of how to use the `MasterServerRegisterData` method to generate the json data needed to register the game server.
 
 ```csharp
 string serverId = "myGame";
@@ -28,3 +29,4 @@ NetworkManager.Instance.Initialize(networker, masterServerHost, masterServerPort
 ```
 
 With all of this setup your game server should now be automatically registered on the Master Server once this method is called.
+
